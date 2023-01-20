@@ -3,11 +3,11 @@ const path = require("path");
 const app = express();
 
 // static middleware
-app.use(express.static(path.join(__dirname, "../stackthon"))); // or '../public'
+app.use(express.static(path.join(__dirname, ".."))); // or '../public'
 
 // Send index.html for any requests that don't match one of our API routes
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/stackthon/index.html"));
+  res.sendFile(path.join(__dirname, "../index.html"));
 });
 
 // error handling middleware
