@@ -26,7 +26,8 @@ function preload() {
   game.load.image("diamond", "assets/diamond.png");
   game.load.spritesheet("eren", "assets/eren.png", 57, 57);
   game.load.spritesheet("reiner", "assets/reiner.png", 80, 80);
-  // game.load.spritesheet("woof", "assets/woof.png", 32, 32);
+  game.load.audio("backgroundMusic", "assets/themeSong.mp3");
+  game.load.audio("coin", "assets/coin.mp3");
 }
 
 function create() {
@@ -50,6 +51,7 @@ function create() {
   }
 
   scoreText = game.add.text(16, 16, "", { fontSize: "32px", fill: "#000" });
+  cursors = game.input.keyboard.createCursorKeys();
 
   //eren
   playerEren = game.add.sprite(200, game.world.height - 400, "eren");
@@ -76,7 +78,20 @@ function create() {
   playerReiner.animations.add("left", [3, 2], 13, true);
   playerReiner.animations.add("right", [2, 3], 13, true);
 
-  cursors = game.input.keyboard.createCursorKeys();
+  //music
+  backgroundMusic = game.sound.add("backgroundMusic");
+  coin = game.sound.add("coin");
+
+  // let musicConfig = {
+  //   mute: false,
+  //   volume: 1000,
+  //   // rate: 1,
+  //   // detune: 0,
+  //   // seek: 0,
+  //   loop: false,
+  //   // delay: 0,
+  // };
+  // backgroundMusic.play();
 }
 
 function update() {
@@ -86,13 +101,16 @@ function update() {
   game.physics.arcade.overlap(playerEren, keys, collectKey, null, this);
   // game.physics.arcade.collide(playerEren, playerReiner);
 
-  if (score === 120) {
-    alert("You found the basement and the secrets to the Titans");
+  if (score === 150) {
+    alert(
+      "You found the basement and the secret of the Titans! SHINZO WO SASAGEYO! "
+    );
     score = 0;
   }
 
   function collectKey(playerEren, key) {
     key.kill();
+    coin.play();
     score += 10;
     scoreText.text = "Score: " + score;
   }

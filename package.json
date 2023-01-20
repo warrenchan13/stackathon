@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon --watch server -e js,html server/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/warrenchan13/stackthon#readme",
   "dependencies": {
+    "express": "^4.18.2",
     "phaser": "^3.55.2",
     "phaser-ce": "^2.19.1"
   }
