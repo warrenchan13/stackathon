@@ -168,8 +168,8 @@ function update() {
   game.physics.arcade.overlap(eren, keys, collectKey, null, this);
 
   if (score === 0) {
-    const endMenu = document.querySelector(".game-end");
-    endMenu.classList.remove("hidden");
+    const endMenuWin = document.querySelector(".game-win");
+    endMenuWin.classList.remove("hidden");
     score = 28;
   }
 
@@ -181,8 +181,8 @@ function update() {
   }
 
   function lose(eren) {
-    const endMenu = document.querySelector(".game-end");
-    endMenu.classList.remove("hidden");
+    const endMenuLose = document.querySelector(".game-lose");
+    endMenuLose.classList.remove("hidden");
   }
 
   eren.body.velocity.x = 0;

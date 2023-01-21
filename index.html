@@ -2,9 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Attack on Titan!</title>
+    <title>AOT</title>
     <script src="//cdn.jsdelivr.net/phaser/2.5.0/phaser.min.js"></script>
-    <script src="./menu.js"></script>
     <!-- <script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script> -->
     <link rel="stylesheet" href="./index.css" type="text/css">
     <link rel="shortcut icon" type="image/png" href="favicon.ico" />
@@ -13,22 +12,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet">
   </head>
   <body id="game">
+    <script src="./menu.js"></script>
     <script type="text/javascript" src="game.js"></script>
     <div class="game-start">
       <h1>Attack on Titan</h1>
-      <h2>Instructions</h2>
+      <h2>Instructions:</h2>
       <ul class="instructions">
-          <li>Collect all the keys to reach the basemenet</li>
+          <li>Collect all the keys to reach the basement</li>
           <li>Move UP (W), LEFT (A), and RIGHT (D)</li>
           <li>If you collide with the titans, you lose!</li>
       </br>
       </ul>
         <button id="start-button">Start</button>
     </div>
-    <div class="game-end hidden">
+    <div class="game-lose hidden">
       <h1>Attack on Titan</h1>
-      <h2>yOu SuCk!!! SHinZoo Wo SasAGEyO!!!~!~!~!~!</h2>
-        <button id="restart-button">Try Again</button>
+      <h2>You Lose!!! SHinZoo Wo SasAGEyO!!!~!~!~!~!</h2>
+        <button id="restart-button-lose">Try Again</button>
+    </div>
+    <div class="game-win hidden">
+      <h1>Attack on Titan</h1>
+      <h2>Winner!</h2>
+      <h3>You've Discovered the Basement!!!</h3>
+      <h3>SHinZoo Wo SasAGEyO!!!~!~!~!~!~!~!~!~!~!</h3> 
+      <button id="restart-button-win">Try Again</button>
     </div>
   </body>
 </html>

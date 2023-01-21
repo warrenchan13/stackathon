@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
   const startButton = document.querySelector("#start-button");
-
   startButton.addEventListener("click", (e) => {
     e.preventDefault();
 
@@ -8,12 +7,21 @@ document.addEventListener("DOMContentLoaded", function () {
     startMenu.classList.add("hidden");
   });
 
-  const restartButton = document.querySelector("#restart-button");
-
-  restartButton.addEventListener("click", (e) => {
+  const restartButtonWin = document.querySelector("#restart-button-win");
+  restartButtonWin.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const endMenu = document.querySelector(".game-end");
-    endMenu.classList.add("hidden");
+    const endMenuWin = document.querySelector(".game-win");
+    endMenuWin.classList.add("hidden");
+    window.location.reload();
+  });
+
+  const restartButtonLose = document.querySelector("#restart-button-lose");
+  restartButtonLose.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const endMenuLose = document.querySelector(".game-lose");
+    endMenuLose.classList.add("hidden");
+    window.location.reload();
   });
 });
