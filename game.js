@@ -9,7 +9,7 @@ let game = new Phaser.Game(1280, 720, Phaser.AUTO, "", {
   update: update,
 });
 
-let score = -20;
+let score = 28;
 let scoreText;
 let facing = "right";
 let hozMove = 300;
@@ -24,7 +24,8 @@ let female;
 let attackTitan;
 
 function preload() {
-  // game.load.image("wall", "assets/wall.png");
+  // game.load.image("startscreen", "assets/startscreen.png");
+  // game.load.image("loading", "assets/loading.png");
   game.load.image("ground", "assets/platform.png");
   game.load.image("house", "assets/aotHouses.png");
   game.load.image("key", "assets/key.png");
@@ -81,15 +82,15 @@ function create() {
 
   keys = game.add.group();
   keys.enableBody = true;
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 28; i++) {
     // create a key inside of the keys group
-    let key = keys.create(i * 50, 0, "key");
+    let key = keys.create(i * 42, 0, "key");
     key.body.gravity.y = 1000;
     // each key has a slightly random bounce value
     key.body.bounce.y = 0.3 + Math.random() * 0.2;
   }
 
-  scoreText = game.add.text(game.world.width / 2, 16, "", {
+  scoreText = game.add.text(game.world.width / 2.4, 16, "", {
     fontSize: "32px",
     fill: "#000",
   });
@@ -99,7 +100,7 @@ function create() {
   eren = game.add.sprite(20, 0, "eren");
   eren.scale.set(1.5);
   game.physics.arcade.enable(eren, Phaser.Physics.ARCADE);
-  eren.body.bounce.y = 0.5;
+  eren.body.bounce.y = 0.25;
   eren.body.gravity.y = 800;
   eren.body.collideWorldBounds = true;
 
@@ -113,14 +114,7 @@ function create() {
   reiner.body.bounce.setTo(1, 1);
   reiner.body.velocity.x = 250;
   reiner.body.immovable = true;
-  // reinerGroup = game.add.group();
-  // for (let i = 0; i < 5; i++) {
-  //   reinerGroup.create(game.world.randomX, game.world.randomY, "reiner");
-  // }
-
-  // game.physics.arcade.enable(reiner);
-  // reiner = game.add.group();
-  // reiner.enableBody = true;
+  reiner.scale.x *= -1;
 
   //reiner2
   reiner2 = game.add.sprite(1200, 800, "reiner2");
@@ -168,31 +162,27 @@ function update() {
   game.physics.arcade.collide(eren, platforms);
   game.physics.arcade.collide(keys, platforms);
   game.physics.arcade.collide(eren, reiner, lose, null, this);
-  // game.physrics.add.collider(eren, reiner);
   game.physics.arcade.collide(eren, reiner2, lose, null, this);
-  // game.physrics.add.collider(eren, reiner2);
   game.physics.arcade.collide(eren, female, lose, null, this);
   game.physics.arcade.collide(eren, attackTitan, lose, null, this);
   game.physics.arcade.overlap(eren, keys, collectKey, null, this);
 
-  if (score === 100) {
-    alert(
-      "You found the basement and the secret of the Titans! SHINZO WO SASAGEYO! "
-    );
-    score = 0;
+  if (score === 0) {
+    const endMenu = document.querySelector(".game-end");
+    endMenu.classList.remove("hidden");
+    score = 28;
   }
 
   function collectKey(eren, key) {
     key.kill();
     coin.play();
-    score += 10;
-    scoreText.text = "Score: " + score;
+    score -= 1;
+    scoreText.text = "Remaining: " + score;
   }
 
   function lose(eren) {
-    // alert("You lose!");
-    // score -= 5;
-    // scoreText.text = "Score: " + score;
+    const endMenu = document.querySelector(".game-end");
+    endMenu.classList.remove("hidden");
   }
 
   eren.body.velocity.x = 0;
