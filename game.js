@@ -51,15 +51,15 @@ window.onload = function () {
     ground.body.immovable = true;
 
     // ledges
-    let ledge = platforms.create(-300, 175, "ground");
+    let ledge = platforms.create(-450, 175, "ground");
     ledge.scale.setTo(1, 0.25);
     ledge.body.immovable = true;
 
-    ledge = platforms.create(200, 350, "ground");
+    ledge = platforms.create(250, 350, "ground");
     ledge.scale.setTo(0.25, 0.25);
     ledge.body.immovable = true;
 
-    ledge = platforms.create(300, 90, "ground");
+    ledge = platforms.create(330, 90, "ground");
     ledge.scale.setTo(0.25, 0.25);
     ledge.body.immovable = true;
 
@@ -71,7 +71,7 @@ window.onload = function () {
     ledge.scale.setTo(0.2, 0.25);
     ledge.body.immovable = true;
 
-    ledge = platforms.create(900, 150, "ground");
+    ledge = platforms.create(920, 150, "ground");
     ledge.scale.setTo(0.2, 0.25);
     ledge.body.immovable = true;
 
